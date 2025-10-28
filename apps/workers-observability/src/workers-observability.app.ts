@@ -87,8 +87,8 @@ export class ObservabilityMCP extends McpAgent<Env, State, Props> {
 		registerObservabilityTools(this)
 
 		// Add docs tools
-		registerDocsTools(this, this.env)
-		registerPrompts(this)
+		registerDocsTools(this.server, this.env)
+		registerPrompts(this.server)
 	}
 
 	async getActiveAccountId() {

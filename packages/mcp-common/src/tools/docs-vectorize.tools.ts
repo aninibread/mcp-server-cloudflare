@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import type { CloudflareMcpAgentNoAccount } from '../types/cloudflare-mcp-agent.types'
+import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 
 interface RequiredEnv {
 	AI: Ai
@@ -12,10 +12,10 @@ const TOP_K = 10
 
 /**
  * Registers the docs search tool with the MCP server
- * @param agent The MCP server instance
+ * @param server The MCP server instance
  */
-export function registerDocsTools(agent: CloudflareMcpAgentNoAccount, env: RequiredEnv) {
-	agent.server.tool(
+export function registerDocsTools(server: McpServer, env: RequiredEnv) {
+	server.tool(
 		'search_cloudflare_documentation',
 		`Search the Cloudflare documentation.
 
@@ -57,7 +57,7 @@ ${result.text}
 
 	// Note: this is a tool instead of a prompt because
 	// prompt support is much less common than tools.
-	agent.server.tool(
+	server.tool(
 		'migrate_pages_to_workers_guide',
 		`ALWAYS read this guide before migrating Pages projects to Workers.`,
 		{},

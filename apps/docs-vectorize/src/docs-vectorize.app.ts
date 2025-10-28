@@ -1,6 +1,6 @@
-import { McpAgent } from 'agents/mcp'
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { createMcpHandler, McpAgent } from 'agents/mcp'
 
-import { createApiHandler } from '@repo/mcp-common/src/api-handler'
 import { getEnv } from '@repo/mcp-common/src/env'
 import { registerPrompts } from '@repo/mcp-common/src/prompts/docs-vectorize.prompts'
 import { initSentry } from '@repo/mcp-common/src/sentry'
@@ -48,9 +48,32 @@ export class CloudflareDocumentationMCP extends McpAgent<Env, State, Props> {
 			sentry,
 		})
 
-		registerDocsTools(this, this.env)
-		registerPrompts(this)
+		registerDocsTools(this.server, this.env)
+		registerPrompts(this.server)
 	}
 }
 
-export default createApiHandler(CloudflareDocumentationMCP)
+const sseHandler = CloudflareDocumentationMCP.serveSSE('/sse')
+
+const statelessServer = new McpServer({
+	name: env.MCP_SERVER_NAME,
+	version: env.MCP_SERVER_VERSION,
+})
+
+registerDocsTools(statelessServer, env)
+registerPrompts(statelessServer)
+
+const mcpHandler = createMcpHandler(statelessServer)
+
+export default {
+	fetch: async (req: Request, env: unknown, ctx: ExecutionContext) => {
+		const url = new URL(req.url)
+		if (url.pathname === '/sse' || url.pathname === '/sse/message') {
+			return sseHandler.fetch(req, env, ctx)
+		}
+		if (url.pathname === '/mcp') {
+			return mcpHandler(req, env, ctx)
+		}
+		return new Response('Not found', { status: 404 })
+	},
+}
