@@ -1,0 +1,23 @@
+apps/stack-mcp/README.md
+  s_689da2aaba6a9e::t_1757760319762c 9-12
+apps/stack-mcp/src/tools/stack.tools.ts
+  s_689da2aaba6a9e::t_20531cbd1ca309 3,6-7
+apps/stack-mcp/src/types/stack.types.ts
+  s_689da2aaba6a9e::t_dccd3d226cc4d3 73-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a9766437d1130504dfde85951e282ce279ed79d9",
+  "prompts": {},
+  "sessions": {
+    "s_689da2aaba6a9e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4ac3b137-f47c-4eab-91fc-c4a9436f247c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Anni Wang <anni@cloudflare.com>"
+    }
+  }
+}
