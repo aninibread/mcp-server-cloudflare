@@ -1,0 +1,33 @@
+apps/stack-mcp/src/tools/stack.tools.ts
+  s_689da2aaba6a9e::t_86f7cea4e36829 3-8,10,38-40,42-46,52,58-59,68,87,95,103-104,114
+apps/stack-mcp/worker-configuration.d.ts
+  s_689da2aaba6a9e::t_2179eadfb48a10 2
+pnpm-lock.yaml
+  s_689da2aaba6a9e::t_5b9bb70ac51225 548,6143
+apps/stack-mcp/README.md
+  s_689da2aaba6a9e::t_380e4a50f21891 41,45
+apps/stack-mcp/package.json
+  s_689da2aaba6a9e::t_3bb4596585a0fe 11
+apps/stack-mcp/src/stack-mcp.app.ts
+  s_689da2aaba6a9e::t_f1bd3625c996b7 1,4,8-11,13,16,26
+apps/stack-mcp/src/stack-mcp.spec.ts
+  s_689da2aaba6a9e::t_08cdb32a7b4faa 1-16
+apps/stack-mcp/vitest.config.ts
+  s_689da2aaba6a9e::t_14a47ee5562720 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "8ce038c99d7ab132d54e3fd835763bb6b6693fa6",
+  "prompts": {},
+  "sessions": {
+    "s_689da2aaba6a9e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4ac3b137-f47c-4eab-91fc-c4a9436f247c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Anni Wang <anni@cloudflare.com>"
+    }
+  }
+}
